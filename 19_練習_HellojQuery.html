@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 20200304 -->
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../_js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="color1">Hello</div>
+        <div id="color2">jQuery</div>
+        <h1><span id="firstColor"></span>、<span id="secondColor"></span></h1>
+    </div>
+    <script>
+        $('#main').css({
+            'margin': '250px 0',
+            'text-align': 'center'
+        });
+
+        $('#main>#color1').css({
+            'font-size': '2rem',
+            'display': 'inline-block',
+            'width': '300px',
+            'padding': '20px 50px'
+        })
+        $('#main>#color2').css({
+            'font-size': '2rem',
+            'display': 'inline-block',
+            'width': '300px',
+            'padding': '20px 50px'
+        })
+        // * 模仿 Hello Color 
+        //   https://jxnblk.github.io/hello-color/?c=f7da2d
+        //   做出一個隨機產生 對比色|互補色 的網頁
+
+        $(document).ready(function () {
+
+            // $('#color1').css('background-color', 'red');
+            // rgb(r, g, b)
+
+
+            setInterval(function () {
+                var r = Math.floor(Math.random() * 256 + 0);
+                var g = Math.floor(Math.random() * 256 + 0);
+                var b = Math.floor(Math.random() * 256 + 0);
+                var color1 = `rgb(${r},${g},${b})`;
+                // console.log(color1);
+                var color2 = `rgb(${255 - r},${255 - g},${b})`;
+                // console.log(color2);
+
+                $('body').css('background-color', color1);
+                $('#color1').css('background-color', color2);
+                $('#color1').css('color', color1);
+                $('#color2').css('color', color2);
+
+                // 顏色代碼呈現
+                $('#color1').text(color1).css('color', color1);
+                $('#color2').text(color2).css('color', color2);
+
+            }, 1000);
+
+            // $('#color1').css('background-color', color1);
+            // $('#color1').css('background-color', color2);
+
+        });
+    </script>
+
+</body>
+
+</html>
